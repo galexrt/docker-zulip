@@ -4,6 +4,8 @@
 # from the provided Git ref.
 FROM ubuntu:20.04 as base
 
+LABEL org.opencontainers.image.source https://github.com/zulip/docker-zulip
+
 # Set up working locales and upgrade the base image
 ENV LANG="C.UTF-8"
 
@@ -38,7 +40,10 @@ WORKDIR /home/zulip/zulip
 
 ARG CUSTOM_CA_CERTIFICATES
 
-# Finally, we provision the development environment and build a release tarball
+# Finally, we provision the development environment and build a release
+# tarball, after first bumping Yarn's network timeout to 5 minutes to account
+# for occasional glitches in QEMU environments (eg. multiarch builds).
+RUN echo 'network-timeout 300000' >> ~/.yarnrc
 RUN SKIP_VENV_SHELL_WARNING=1 ./tools/provision --build-release-tarball-only
 RUN . /srv/zulip-py3-venv/bin/activate && \
     ./tools/build-release-tarball docker && \

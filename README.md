@@ -4,21 +4,31 @@
 
 This is a container image for running [Zulip](https://zulip.com)
 ([GitHub](https://github.com/zulip/zulip)) in
-[production][prod-overview]. Image available from:
+[production][prod-overview].
 
-- [**Docker Hub**](https://hub.docker.com/r/zulip/docker-zulip) (`docker pull zulip/docker-zulip:6.1-0`)
 
-Current Zulip version: `6.1`
-Current Docker image version: `6.1-0`
+```sh
+docker pull ghcr.io/zulip/zulip
 
-Project status: **Alpha**. While this project works and is
-used by many sites in production, configuring is substantially more
-error-prone than the [normal Zulip installer][normal-install] (which
-Just Works). We recommend this project if you want to host Zulip
-using Docker, but both setting up and maintaining a Zulip server is
-simpler and less error-prone with the normal installer than with Docker.
+# Or, pin a version:
+docker pull ghcr.io/zulip/zulip:6.1-1
+```
 
-[normal-install]: https://zulip.readthedocs.io/en/latest/production/install.html
+- Current Zulip Server version: `6.1`
+- Current Docker image version: `6.1-1`
+- Current architectures supported: `amd64`, `arm64`
+
+See all available image tags [in GitHub Container
+Registry](https://github.com/orgs/zulip/packages/container/package/zulip).
+
+Project status: **Alpha**. While these images work and are used by many sites
+in production, configuring is substantially more error-prone than the [bare
+metal Zulip installer][bare-metal-install] (which Just Works, though generally
+expects a dedicated node). We're actively working to improve the situation, but
+for now recommend these containers and orchestrator recipes primarily to those
+comfortable being early adopters, and who are ready to report bugs.
+
+[bare-metal-install]: https://zulip.readthedocs.io/en/latest/production/install.html
 
 ## Overview
 
