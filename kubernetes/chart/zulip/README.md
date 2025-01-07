@@ -79,6 +79,7 @@ Now you're ready to follow [the installation instructions above](#installation).
 | ingress.hosts[0] | object | `{"host":"zulip.example.com","paths":[{"path":"/"}]}` | Host for the Ingress. Should be the same as `zulip.environment.SETTING_EXTERNAL_HOST`. |
 | ingress.hosts[0].paths | list | `[{"path":"/"}]` | Serves Zulip root of the chosen host domain. |
 | ingress.tls | list | `[]` | Set a specific secret to read the TLS certificate from. If you use cert-manager, it will save the TLS secret here. If you do not, you need to manually create a secret with your TLS certificate. |
+| ingress.className | string | `""` | specify an explicit ingressClassName. |
 | livenessProbe | object | `{"enabled":true,"failureThreshold":3,"initialDelaySeconds":10,"periodSeconds":10,"successThreshold":1,"timeoutSeconds":5}` | Liveness probe values. Ref: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes |
 | memcached | object | `{"memcachedUsername":"zulip@localhost"}` | Memcached settings, see [Requirements](#Requirements). |
 | nameOverride | string | `""` | Partially override common.names.fullname template (will maintain the release name). |
