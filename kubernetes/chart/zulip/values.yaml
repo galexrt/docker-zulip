@@ -94,6 +94,8 @@ ingress:
   #  - secretName: chart-example-tls
   #    hosts:
   #      - zulip.example.com
+  # set an explicit class name
+  className:
 
 resources:
   {}
